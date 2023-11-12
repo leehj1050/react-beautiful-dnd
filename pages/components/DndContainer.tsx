@@ -56,8 +56,8 @@ const DndContainer = ({columns, setColumns}: any) => {
                                             <div
                                                 ref={provided.innerRef} {...provided.droppableProps}
                                                 className={styles.container}>
-                                                {column.items.map((item, idx) => (
-                                                    <Item key={item} item={item} index={idx}/>
+                                                {column.items.map((item, index) => (
+                                                    <Item key={item} item={item} index={index}/>
                                                 ))}
                                                 {provided.placeholder}
                                             </div>
@@ -72,16 +72,4 @@ const DndContainer = ({columns, setColumns}: any) => {
     )
 }
 
-
-// <div>
-//                                                 <button onClick={() => {
-//                                                     setColumns({
-//                                                         ...columns, [uuidv4()]: {
-//                                                             title: '완료',
-//                                                             items: [],
-//                                                         }
-//                                                     })
-//                                                 }}>+
-//                                                 </button>
-//                                             </div>
 export default DndContainer;
