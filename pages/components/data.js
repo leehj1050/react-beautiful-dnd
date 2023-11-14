@@ -1,25 +1,30 @@
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 
 
 export const data = [
-    { id: uuidv4 (), content: "item1" },
-    { id: uuidv4 (), content: "item2" },
-    { id: uuidv4 (), content: "item3" },
-    { id: uuidv4 (), content: "item4" },
-    { id: uuidv4 (), content: "item5" },
-    { id: uuidv4 (), content: "item6" },
-    { id: uuidv4 (), content: "item7" },
-    { id: uuidv4 (), content: "item8" }
+    {id: 'item1', content: "item1"},
+    {id: "item2", content: "item2"},
+    {id: "item3", content: "item3"},
+    {id: "item4", content: "item4"},
+    {id: "item5", content: "item5"},
+    {id: "item6", content: "item6"},
+    {id: "item7", content: "item7"},
+    {id: "item8", content: "item8"}
+]
+
+export const data2=[
+    {id:"item30" , content:"item30"},
+    {id: "item40" , content:"item40"}
 ]
 
 export const columnData = {
-    [uuidv4()]: {
+    ["컬럼id_1"]: {
         title: '할일',
         items: data,
     },
-    [uuidv4()]: {
+    ["컬럼id_2"]: {
         title: '진행중',
-        items: [],
+        items: data2,
     },
 }
 

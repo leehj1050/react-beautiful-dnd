@@ -1,0 +1,12 @@
+
+.item {
+    width: 250px;
+    height: 100px;
+    background: #fff;
+    padding: 1em;
+    margin-bottom: 15px;
+}
+
+.item:hover {
+    background: lightblue;
+}

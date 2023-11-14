@@ -1,17 +1,23 @@
 'use client'
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
-import {v4 as uuidv4} from 'uuid';
 import '@atlaskit/css-reset';
 import styles from '../../styles/DndContainer.module.css'
-import Item from "./Item";
-import {useState} from "react";
 import Column from "./Column";
 
 const DndContainer = ({columns, setColumns}: any) => {
 
+    /**
+     * 드래그 동작시 실행할 함수
+     * */
     const handleDragEnd = ({result, columns, setColumns}: any) => {
         if (!result.destination) return;
         const {source, destination} = result;
+
+        console.log(" 작동 >>> " , result)
+        // source 전 index , destination 후 index
+
+
+
         if (source.droppableId !== destination.droppableId) {
             const sourceColumn = columns[source.droppableId];
             const destColumn = columns[destination.droppableId];
@@ -45,30 +51,23 @@ const DndContainer = ({columns, setColumns}: any) => {
         }
     };
 
+
     return (
-        <>
-            <DragDropContext onDragEnd={(result) => handleDragEnd({result, columns, setColumns})}>
-                        <div className={styles.wrap}>
-                            {Object.entries(columns).map(([columnId, column], index) => {
-                                return (
-                                    <Droppable droppableId={columnId} key={columnId}>
-                                        {provided => (
-                                            <div
-                                                ref={provided.innerRef} {...provided.droppableProps}
-                                                className={styles.container}>
-                                                {column.items.map((item, index) => (
-                                                    <Item key={item} item={item} index={index}/>
-                                                ))}
-                                                {provided.placeholder}
-                                            </div>
-                                        )
-                                        }
-                                    </Droppable>
-                                )
-                            })}
+        <DragDropContext onDragEnd={(result) => handleDragEnd({result, columns, setColumns})}>
+            <div className={styles.wrap}>
+                <Droppable droppableId='board' key='board'>
+                    {provided => (
+                        <div className={styles.board_wrap} ref={provided.innerRef} {...provided.droppableProps}>
+                                {Object.entries(columns).map(([columnId, column], index) => {
+                                    return (
+                                        <Column columnId={columnId} column={column} index={index} key={index}/>
+                                    )
+                                })}
                         </div>
-            </DragDropContext>
-        </>
+                    )}
+                </Droppable>
+            </div>
+        </DragDropContext>
     )
 }
 

@@ -1,7 +1,7 @@
 'use client'
-import DndContainer from "../pages/components/DndContainer";
+import DndContainer from "./components/DndContainer";
 import {useEffect, useState} from "react";
-import {columnData} from '../pages/components/data'
+import {columnData} from "./components/data"
 
 
 
